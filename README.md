@@ -15,6 +15,8 @@ The actions that can be done by this LWRP over plain files are:
 You can add the recipe `conf` to a node `run_list`, so all the recipes from
 that runlist can use the resources and providers.
 
+[![Build Status](https://secure.travis-ci.org/juanje/cookbook-conf.png)](http://travis-ci.org/juanje/cookbook-conf)
+
 
 Requirements
 ============
