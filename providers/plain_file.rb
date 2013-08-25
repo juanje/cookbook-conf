@@ -10,7 +10,7 @@ end
 
 action :replace do
   if ::File.exists? new_resource.name
-    current_content = Chef::Util::FileEdit.new new_resource.name
+    current_content = Conf::ConfFileEdit.new new_resource.name
     current_content.search_file_replace(new_resource.current_line, new_resource.new_line)
     edited = current_content.file_edited
     current_content.write_file
@@ -34,7 +34,7 @@ end
 
 action :insert_if_no_match do
   if ::File.exists? new_resource.name
-    new_file = Chef::Util::FileEdit.new new_resource.name
+    new_file = Conf::ConfFileEdit.new new_resource.name
     new_file.insert_line_if_no_match(new_resource.pattern,
                                      new_resource.new_line)
     edited = new_file.file_edited
@@ -51,7 +51,7 @@ end
 
 action :insert_after_match do
   if ::File.exists? new_resource.name
-    new_file = Chef::Util::FileEdit.new new_resource.name
+    new_file = Conf::ConfFileEdit.new new_resource.name
     new_file.insert_line_after_match(new_resource.pattern,
                                      new_resource.new_line)
     edited = new_file.file_edited
@@ -68,7 +68,7 @@ end
 
 action :remove do
   if ::File.exists? new_resource.name
-    new_file = Chef::Util::FileEdit.new new_resource.name
+    new_file = Conf::ConfFileEdit.new new_resource.name
     new_file.search_file_delete_line(new_resource.pattern)
     edited = new_file.file_edited
     new_file.write_file
